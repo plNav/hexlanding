@@ -1,0 +1,62 @@
+---
+// src/components/HeaderNav.astro
+---
+
+<style>
+    .nav {
+      position: sticky;
+      top: 0;
+      background-color: #1a1a1a;
+      border-bottom: 1px solid #6b5b95;
+      padding: 1rem;
+      z-index: 1000;
+    }
+  
+    .menu-button {
+      display: none;
+    }
+  
+    @media (max-width: 767px) {
+      .menu-button {
+        display: inline-block;
+      }
+  
+      .menu {
+        display: none;
+      }
+  
+      .menu.open {
+        display: flex;
+      }
+    }
+  </style>
+  
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navbar-default');
+      menu?.classList.toggle('hidden');
+      menu?.classList.toggle('open');
+    }
+  </script>
+  
+  <nav class="nav">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="#home" class="flex items-center">
+          <img src="/your-background-image.webp" class="h-8 mr-3" alt="Flowbite Logo" />
+          <span class="self-center text-2xl font-semibold whitespace-nowrap text-secondary">HEXBLEM</span>
+      </a>
+      <button type="button" class="menu-button text-secondary" onclick="toggleMenu()">
+        &#9776;
+      </button>
+      <div class="menu hidden w-full md:block md:w-auto" id="navbar-default">
+        <ul class="flex flex-col p-4 md:p-0 mt-4 border border-gray-700 rounded-lg bg-background md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-background">
+          <li><a href="#home" class="block py-2 px-3 text-secondary">Home</a></li>
+          <li><a href="#subscribe" class="block py-2 px-3 text-secondary">Subscribe</a></li>
+          <li><a href="#services" class="block py-2 px-3 text-secondary">Services</a></li>
+          <li><a href="#pricing" class="block py-2 px-3 text-secondary">Pricing</a></li>
+          <li><a href="#contact" class="block py-2 px-3 text-secondary">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  

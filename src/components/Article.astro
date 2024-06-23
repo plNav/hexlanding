@@ -1,0 +1,12 @@
+---
+// src/components/Article.astro
+const { image, title, description } = Astro.props;
+---
+
+<article class="flex flex-col md:flex-row items-center p-4 bg-background text-white">
+  <img src={image} alt={title} class="w-full md:w-1/4 mb-4 md:mb-0 md:mr-4" />
+  <div class="article-content flex-1">
+    <h2 class="text-secondary text-2xl mb-2">{title}</h2>
+    <p>{description}</p>
+  </div>
+</article>

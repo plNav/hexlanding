@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ParallaxContent from "../components/ParallaxContent.astro";
+import SubscribeSection from "../components/SubscribeSection.astro";
+import Article from "../components/Article.astro";
+---
+
+<BaseLayout>
+  <ParallaxContent>
+    <SubscribeSection />
+  </ParallaxContent>
+
+  <div class="bg-background text-white py-8">
+    <Article 
+      image="https://media.istockphoto.com/id/1068817392/photo/cool-placeholder-for-your-picture-no-movie-screen-35mm-film-strip.jpg?s=612x612&w=0&k=20&c=EtidjW1YFEA7G_QKhbMPn_YjFqMXdIB22wEO0seeaVI="
+      title="Article Title"
+      description="This is a description for the article. It provides some details about the content and context of the article."
+    />
+  </div>
+</BaseLayout>

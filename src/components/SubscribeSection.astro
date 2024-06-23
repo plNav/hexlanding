@@ -1,0 +1,30 @@
+---
+// src/components/SubscribeSection.astro
+---
+
+<style>
+    .subscribe-section {
+      position: relative;
+      width: 300px;
+      padding: 20px;
+      background: rgba(26, 26, 26, 0.8); /* Semi-transparent background */
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+  
+    @media (max-width: 600px) {
+      .subscribe-section {
+        width: 80%;
+      }
+    }
+  </style>
+  
+  <div class="subscribe-section" id="subscribe">
+    <h2 class="text-secondary">Subscribe</h2>
+    <form>
+      <input type="email" placeholder="Enter your email" class="w-full p-2 mb-4 rounded-md" />
+      <button type="submit" class="w-full p-2 bg-secondary text-background rounded-md">Subscribe</button>
+    </form>
+  </div>
+  
