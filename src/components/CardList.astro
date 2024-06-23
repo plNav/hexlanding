@@ -27,7 +27,12 @@ const cards = [
         content: "This is the content for card 1.",
         direction: "left",
     },
-    // Add more cards as needed
+    {
+        image: "/logo.png",
+        title: "Card Title 4",
+        content: "This is the content for card 4.",
+        direction: "right",
+    },
 ];
 ---
 
@@ -36,12 +41,13 @@ const cards = [
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: 12rem;
     }
 
     .card-container {
         width: 100%;
         display: flex;
-        margin: 2rem 0; /* Add margin for more spacing */
+        margin: 2rem; /* Add margin for more spacing */
     }
 
     .card-left {
@@ -51,6 +57,12 @@ const cards = [
     .card-right {
         justify-content: flex-end;
     }
+
+    @media (max-width: 768px) {
+        .card-container {
+            margin: 1rem 0; /* Adjust margin for smaller screens */
+        }
+    }
 </style>
 
 <div class="card-list">
@@ -58,9 +70,37 @@ const cards = [
         cards.map((card, index) => (
             <div
                 class={`card-container ${card.direction === "left" ? "card-left" : "card-right"}`}
+                id={`card-container-${index}`}
             >
                 <Card {...card} />
             </div>
         ))
     }
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const observerOptions = {
+            threshold: 0.7,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const cardElement = entry.target.querySelector(".card");
+                    if (cardElement) {
+                        cardElement.classList.add("visible");
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll(".card-container").forEach((el, index) => {
+            if (el) {
+                const cardElement = el.querySelector(".card");
+                observer.observe(el);
+            }
+        });
+    });
+</script>
