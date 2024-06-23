@@ -1,0 +1,107 @@
+---
+// src/components/ParallaxContent.astro
+---
+
+<style>
+  .parallax {
+    position: relative;
+    height: 120vh; /* Increased height to allow space for the gap */
+    overflow: hidden;
+  }
+
+  .parallax__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/title.jpg");
+    background-size: cover;
+    opacity: 0.4;
+    background-attachment: fixed;
+    z-index: -1;
+  }
+
+  .parallax__content {
+    position: relative;
+    height: 140vh; /* Increased height to match the container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center the content initially */
+    z-index: 1;
+  }
+
+  .title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ffd700; /* Gold color */
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slideIn 1s forwards ease-in-out;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #ffd700; /* Gold color */
+    opacity: 0;
+    animation: fadeIn 1s forwards ease-in-out;
+    animation-delay: 1s; /* Starts after the title animation finishes */
+  }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .gap {
+    height: 50vh; /* Adjusted to have the subscribe section just outside the screen at the beginning */
+    transition: height 0.2s linear;
+  }
+
+  @media (max-width: 600px) {
+    .gap {
+      height: 70vh; /* Adjusted for smaller screens */
+    }
+
+    .title {
+      font-size: 2.5rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  window.addEventListener("scroll", function () {
+    const scrolled = window.scrollY;
+    const gap = document.querySelector(".gap") as HTMLElement;
+
+    if (gap) {
+      const newHeight = Math.max(20, 50 - scrolled * 0.1); // Adjust the multiplier as needed
+      gap.style.height = `${newHeight}vh`;
+    }
+  });
+</script>
+
+<div class="parallax">
+  <div class="parallax__background"></div>
+  <div class="parallax__content" id="home">
+    <h1 class="title">HEXBLEM</h1>
+    <h2 class="subtitle">BEATING THE UNBEATABLE</h2>
+    <div class="gap"></div>
+    <slot />
+  </div>
+</div>

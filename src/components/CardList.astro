@@ -1,0 +1,66 @@
+---
+// src/components/CardList.astro
+import Card from "./Card.astro";
+
+const cards = [
+    {
+        image: "/logo.png",
+        title: "Card Title 2",
+        content: "This is the content for card 2.",
+        direction: "right",
+    },
+    {
+        image: "/logo.png",
+        title: "Card Title 3",
+        content: "This is the content for card 3.",
+        direction: "left",
+    },
+    {
+        image: "/logo.png",
+        title: "Card Title 4",
+        content: "This is the content for card 4.",
+        direction: "right",
+    },
+    {
+        image: "/logo.png",
+        title: "Card Title 1",
+        content: "This is the content for card 1.",
+        direction: "left",
+    },
+    // Add more cards as needed
+];
+---
+
+<style>
+    .card-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-container {
+        width: 100%;
+        display: flex;
+        margin: 2rem 0; /* Add margin for more spacing */
+    }
+
+    .card-left {
+        justify-content: flex-start;
+    }
+
+    .card-right {
+        justify-content: flex-end;
+    }
+</style>
+
+<div class="card-list">
+    {
+        cards.map((card, index) => (
+            <div
+                class={`card-container ${card.direction === "left" ? "card-left" : "card-right"}`}
+            >
+                <Card {...card} />
+            </div>
+        ))
+    }
+</div>
