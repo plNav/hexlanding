@@ -5,7 +5,7 @@
 <style>
     .parallax {
       position: relative;
-      height: 150vh; /* Increased height to allow space for the gap */
+      height: 120vh; /* Increased height to allow space for the gap */
       overflow: hidden;
     }
   
@@ -66,6 +66,7 @@
   
     .gap {
       height: 50vh; /* Adjusted to have the subscribe section just outside the screen at the beginning */
+      transition: height 0.2s linear;
     }
   
     @media (max-width: 600px) {
@@ -82,6 +83,18 @@
       }
     }
   </style>
+  
+  <script>
+    window.addEventListener('scroll', function() {
+      const scrolled = window.scrollY;
+      const gap = document.querySelector('.gap') as HTMLElement;
+  
+      if (gap) {
+        const newHeight = Math.max(20, 50 - scrolled * 0.1); // Adjust the multiplier as needed
+        gap.style.height = `${newHeight}vh`;
+      }
+    });
+  </script>
   
   <div class="parallax">
     <div class="parallax__background"></div>
