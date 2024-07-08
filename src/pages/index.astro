@@ -5,6 +5,8 @@ import SubscribeSection from "../components/SubscribeSection.astro";
 import Intro from "../components/Intro.astro";
 import Reasons from "../components/Reasons.astro";
 import CardList from "../components/CardList.astro";
+import Carousel from "../components/Carousel.astro";
+import CarouselContainer from "../components/CarouselContainer.astro";
 ---
 
 <BaseLayout>
@@ -16,5 +18,8 @@ import CardList from "../components/CardList.astro";
     <CardList />
   </Reasons>
   <Intro />
+  <CarouselContainer>
+    <Carousel />
+  </CarouselContainer>
   <Intro />
 </BaseLayout>

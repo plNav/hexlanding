@@ -1,0 +1,72 @@
+---
+// src/components/ParallaxContent.astro
+---
+
+<style>
+    .parallax {
+        position: relative;
+        height: 100vh; /* Increased height to allow space for the gap */
+        overflow: hidden;
+    }
+
+    .parallax__background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("/reasons.jpg");
+        background-size: cover;
+        opacity: 0.4;
+        background-attachment: fixed;
+        z-index: -1;
+    }
+
+    .parallax__content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Center the content initially */
+        z-index: 1;
+    }
+
+    .title {
+        font-size: 4rem;
+        font-weight: 700;
+        color: #ffd700; /* Gold color */
+        text-transform: uppercase;
+        opacity: 0;
+        transform: translateX(-100%);
+        animation: slideIn 1s forwards ease-in-out;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: #ffd700; /* Gold color */
+        opacity: 0;
+        animation: fadeIn 1s forwards ease-in-out;
+        animation-delay: 1s; /* Starts after the title animation finishes */
+    }
+
+    @keyframes slideIn {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+
+<div class="parallax">
+    <div class="parallax__background"></div>
+    <div class="parallax__content" id="home">
+        <slot />
+    </div>
+</div>
