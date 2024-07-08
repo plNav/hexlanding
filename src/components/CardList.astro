@@ -5,32 +5,33 @@ import Card from "./Card.astro";
 const cards = [
     {
         image: "/logo.png",
-        title: "Card Title 2",
-        content: "This is the content for card 2.",
+        title: "Esencia Dungeon",
+        content: "Exploración, pillaje y partidas de cara, por supuesto",
         direction: "right",
     },
     {
         image: "/logo.png",
-        title: "Card Title 3",
-        content: "This is the content for card 3.",
+        title: "Mundos Únicos",
+        content: "No hay dos partidas iguales",
         direction: "left",
     },
     {
         image: "/logo.png",
-        title: "Card Title 4",
-        content: "This is the content for card 4.",
+        title: "1 - 4 Jugadores",
+        content: "Partidas Rápidas (30' x Jugador)",
         direction: "right",
     },
     {
         image: "/logo.png",
-        title: "Card Title 1",
-        content: "This is the content for card 1.",
+        title: "Gestión de Recursos",
+        content: "¿Mejorarás tu Emblema o cumplirás una Misión?",
         direction: "left",
     },
+
     {
         image: "/logo.png",
-        title: "Card Title 4",
-        content: "This is the content for card 4.",
+        title: "Competitivo",
+        content: "Esta party no va de colegueo",
         direction: "right",
     },
 ];
@@ -39,9 +40,10 @@ const cards = [
 <style>
     .card-list {
         display: flex;
+        width: 100vw;
         flex-direction: column;
         align-items: center;
-        margin-top: 8rem;
+        margin-top: 4rem;
     }
 
     .card-container {
@@ -56,12 +58,6 @@ const cards = [
 
     .card-right {
         justify-content: flex-end;
-    }
-
-    @media (max-width: 768px) {
-        .card-container {
-            margin: 1rem 0; /* Adjust margin for smaller screens */
-        }
     }
 </style>
 
